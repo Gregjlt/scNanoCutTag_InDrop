@@ -82,7 +82,7 @@ mem_to_use=$(get_mem $READ_1)
 ppn_to_use=$((mem_to_use / 6))
 echo $ppn_to_use 
 
-echo "cd /data/users/gjouault/GitLab/scNanoCutTag_InDrop; ./schip_processing.sh All --forward ${READ_1} --reverse ${READ_3} --index ${READ_2} --conf ${OUTPUT_CONFIG} --output ${OUTPUT_DIR} --name ${FINAL_NAME} " | qsub -l nodes=1:ppn=${ppn_to_use},mem=${mem_to_use}gb,walltime=164:00:00 -N job_${FINAL_NAME}
+echo "cd /data/users/gjouault/GitLab/scNanoCutTag_InDrop; ./schip_processing.sh All --forward ${READ_1} --reverse ${READ_3} --index ${READ_2} --conf ${OUTPUT_CONFIG} --output ${OUTPUT_DIR} --name ${FINAL_NAME} --nanobc ${NANOBC} " | qsub -l nodes=1:ppn=${ppn_to_use},mem=${mem_to_use}gb,walltime=164:00:00 -N job_${FINAL_NAME}
 
 
 done < "$sample_sheet"

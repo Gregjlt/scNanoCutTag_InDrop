@@ -285,6 +285,7 @@ echo "Running pipeline for sample $NAME"
     ## - First, need to find the sequence of the nanoBC used according to the nanobc name and the reference file nano_bc_ref.csv
   if [[  -n "${TO_RUN[Fastq]}" ]]; then
    
+   echo "The name of the barcode we search for is ${NANOBC}"
     
     BARCODE_SEQ=$(awk -F ',' -v nom="$NANOBC" '$1 == nom {print $3}' "$NANOBC_REF")
     
