@@ -43,7 +43,7 @@ echo "$mem"
 
 
 #CREATE CONFIG FILE : HUMAN, BEADS CURIE, IP, BED = 20k +50k
-cd /data/users/gjouault/GitLab/scCutTag_InDrop
+cd /data/users/gjouault/GitLab/scNanoCutTag_InDrop
 
 while IFS= read -r line
 do
@@ -54,7 +54,16 @@ do
   MARK=$(echo "$line" | cut -d',' -f5)
   DESIGN_TYPE=LBC
   
+  echo $BCL_DIR
+  echo $NGS_NAME
+  echo $ASSEMBLY
+  echo $NANOBC
+  echo $MARK 
+  echo $DESIGN_TYPE
+  
   FINAL_NAME=${NGS_NAME}_${ASSEMBLY}_${NANO_BC}_${MARK}
+  
+  echo $FINAL_NAME 
   
   OUTPUT_CONFIG=/data/tmp/gjouault/results/CONFIG_scNanoCutTag_InDrop_${FINAL_NAME}
  
