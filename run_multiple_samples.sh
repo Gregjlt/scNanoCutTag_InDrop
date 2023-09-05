@@ -61,7 +61,7 @@ do
   echo $MARK 
   echo $DESIGN_TYPE
   
-  FINAL_NAME=${NGS_NAME}_${ASSEMBLY}_${NANO_BC}_${MARK}
+  FINAL_NAME=${NGS_NAME}_${ASSEMBLY}_${NANOBC}_${MARK}
   
   echo $FINAL_NAME 
   
