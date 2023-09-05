@@ -67,7 +67,8 @@ do
   
   OUTPUT_CONFIG=/data/tmp/gjouault/results/CONFIG_scNanoCutTag_InDrop_${FINAL_NAME}
  
-  ./schip_processing.sh GetConf --template  CONFIG_TEMPLATE --configFile species_design_configs.csv --designType ${DESIGN_TYPE} --genomeAssembly ${ASSEMBLY} --outputConfig ${OUTPUT_CONFIG} --mark ${MARK}
+  ./schip_processing.sh GetConf --template  CONFIG_TEMPLATE --configFile species_design_configs.csv --designType ${DESIGN_TYPE} --genomeAssembly ${ASSEMBLY} --outputConfig ${OUTPUT_CONFIG} 
+  # --mark ${MARK}
  
   OUTPUT_DIR=/data/kdi_prod/project_result/1184/02.00/results/scCutTag/${ASSEMBLY}/${FINAL_NAME}
 
@@ -78,7 +79,7 @@ do
   echo
   
 mem_to_use=$(get_mem $READ_1)
-ppn_to_use=$((mem_o_use // 6))
+ppn_to_use=$((mem_to_use // 6))
 
 echo "cd /data/users/gjouault/GitLab/scCutTag_InDrop;./schip_processing.sh All --forward ${READ_1} --reverse ${READ_3} --index ${READ_2} --conf ${OUTPUT_CONFIG} --output ${OUTPUT_DIR} --name ${FINAL_NAME} --nanobc ${NANOBC}"| qsub -l nodes=1:ppn=${ppn_to_use},mem=${mem_to_use}gb,walltime=164:00:00 -N job_${FINAL_NAME}
 
