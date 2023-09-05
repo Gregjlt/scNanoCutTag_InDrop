@@ -178,7 +178,7 @@ then
           v) version ;;
           h) help ;;
           \?)
-              echo "Invalid option P1: -$OPTARG" >&2
+              echo "Invalid option P1: - $OPTARG" >&2
               usage
               echo "we are in P1"
               exit 1
