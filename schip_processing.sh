@@ -180,11 +180,13 @@ then
           \?)
               echo "Invalid option P1: -$OPTARG" >&2
               usage
+              echo "we are in P1"
               exit 1
               ;;
           :)
               echo "Option -$OPTARG requires an argument." >&2
               usage
+              echo "we are in P2"
               exit 1
               ;;
       esac
@@ -206,11 +208,13 @@ else
           \?)
               echo "Invalid option P2: -$OPTARG" >&2
               usage
+              echo "we are in P3"
               exit 1
               ;;
           :)
               echo "Option -$OPTARG requires an argument." >&2
               usage
+              echo "we are in P4"
               exit 1
               ;;
       esac
