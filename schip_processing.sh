@@ -16,12 +16,12 @@ COMMAND=${1}
 BIN_PATH=`dirname "$0"`
 BIN_NAME=`basename "$0"`
 ABS_BIN_PATH=`cd "$BIN_PATH"; pwd`
-SCRIPTS_PATH="$ABS_BIN_PATH/scripts/"
+SCRIPTS_PATH="$ABS_BIN_PATH/scripts"
 
 . /$SCRIPTS_PATH/utils.inc.sh
 . /$SCRIPTS_PATH/func.inc.sh
 . /$SCRIPTS_PATH/make_metadata.sh
-. /$SCRIPTS_PATH/select_lines.sh
+# . /$SCRIPTS_PATH/select_lines.sh
 
 NANOBC_REF="$ABS_BIN_PATH/nano_bc_ref.csv"
 
