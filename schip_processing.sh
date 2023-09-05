@@ -307,6 +307,7 @@ echo "Running pipeline for sample $NAME"
   
 
         echo -e "Reversing the index fastq... \n"
+        echo -e "je ne comprends rien à ce qu'il se passe"
         reverse_fastq_func ${ODIR} ${INDEX} ${PREFIX} ${LOGDIR}
        fi  
    
