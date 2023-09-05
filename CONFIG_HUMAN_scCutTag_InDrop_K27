@@ -1,0 +1,88 @@
+#########################################################################
+## PATHS AND SETTINGS
+#########################################################################
+
+BOWTIE_PATH = /bioinfo/local/build/Centos/bowtie/bowtie-1.2/bin/
+BOWTIE2_PATH = /bioinfo/local/build/Centos/bowtie2/bowtie2-2.2.9/
+SAMTOOLS_PATH = /bioinfo/local/build/Centos/samtools/samtools-1.3/bin/
+BEDTOOLS_PATH = /bioinfo/local/build/Centos/bedtools/bedtools-2.27.1/bin/
+PYTHON_PATH = /bioinfo/local/build/Centos/python/python-2.7.13/bin/
+R_PATH = /bioinfo/local/build/Centos/R/R-3.5.0/bin/
+FASTX_PATH = /bioinfo/local/build/fastx_toolkit_0.0.13/
+STAR_PATH = /bioinfo/local/build/Centos/STAR/STAR-2.7.5a/bin/Linux_x86_64/
+BWA_PATH = /bioinfo/local/build/Centos/bwa/bwa-0.7.15/
+R_DOWNSTREAM = /data/users/pprompsy/GitLab/R_automated_scripts/scChIPseq_analysis/R_scChIP_seq_analysis.R
+
+#########################################################################
+## CLUSTER PARAMETERS
+#########################################################################
+
+NB_PROC = 8
+
+#########################################################################
+## PROJECT SPECIFIC PARAMETERS
+#########################################################################
+
+ANNOT = mm10
+DESIGN_TYPE = LBC
+MARK = h3k27me3
+
+#########################################################################
+## BCL TO FASTQ
+#########################################################################
+BCL2FASTQ_BASEMASK = 50
+
+#########################################################################
+## BARCODE MAPPING
+#########################################################################
+
+BARCODE_LENGTH = 60 
+BARCODE_LINKER_LENGTH = 84
+BARCODE_MAPPING_OPTS =  -N 1 -L 8 --rdg 0
+BARCODE_BOWTIE_IDX_PATH = 7 --rfg 0
+
+#########################################################################
+## GENOME MAPPING
+#########################################################################
+# by default, override with --override MAPPER=BWA for bwa mem
+MAPPER=STAR
+#STAR
+GENOME_MAPPING_OPTS_STAR = -1 -t --no-unal --no-hd
+GENOME_IDX_PATH_STAR = /data/annotations/pipelines/Mouse/mm10/indexes/STAR_2.7.6a/
+
+#BWA MEM
+GENOME_MAPPING_OPTS_BWA = {genome_mapping_options_bwa}
+GENOME_IDX_PATH_BWA = 
+
+#BOWTIE MAPPING (disabled by default, override with STRINGENT_MULTIMAP = TRUE)
+STRINGENT_MULTIMAP = FALSE
+GENOME_MAPPING_OPTS_BOWTIE1 = -S -m1
+GENOME_IDX_PATH_BOWTIE1 = /data/annotations/bowtie_indexes/mm10
+
+#########################################################################
+## DUPLICATE REMOVAL 
+#########################################################################
+
+REMOVE_RT_DUPLICATES = 7 --mp 7
+REMOVE_BY = TRUE
+DUPLICATES_WINDOW = BED/gencode.M25.annotation.merged.bed
+
+#Filtering
+ENCODE_BLACKLIST = Barcodes_LBC_Curie/index_barcode/bowtie_2_index_short/ref_index_
+
+#########################################################################
+## COUNTING
+#########################################################################
+
+MIN_COUNT_PER_BARCODE_AFTER_RMDUP = --alignEndsType EndToEnd --outFilterMultimapScoreRange 2 --winAnchorMultimapNmax 1000 --alignIntronMax 1 --alignMatesGapMax 600 --limitGenomeGenerateRAM 25000000000 --outSAMunmapped Within
+BIN_SIZE = 7 --ignore-quals --score-min L
+BED_FEATURES = 0
+TMP_DIR = /scratch/
+
+#########################################################################
+## DOWNSTREAM ANALYSIS
+#########################################################################
+
+N_CLUSTER = BED/mm10.blacklist.bed
+MIN_PERCENT_COR = position 
+MIN_COV = TRUE
