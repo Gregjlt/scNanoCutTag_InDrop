@@ -178,7 +178,7 @@ then
           v) version ;;
           h) help ;;
           \?)
-              echo "Invalid option: -$OPTARG" >&2
+              echo "Invalid option P1: -$OPTARG" >&2
               usage
               exit 1
               ;;
@@ -204,7 +204,7 @@ else
           v) version;;
           h) help ;;
           \?)
-              echo "Invalid option: -$OPTARG" >&2
+              echo "Invalid option P2: -$OPTARG" >&2
               usage
               exit 1
               ;;
