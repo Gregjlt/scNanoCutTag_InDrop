@@ -281,10 +281,13 @@ fi
 
 echo "Running pipeline for sample $NAME"
 
-    ## - Demultiplex the FASTQ files by nanoBC 
+ ## - Demultiplex the FASTQ files by nanoBC 
     ## - First, need to find the sequence of the nanoBC used according to the nanobc name and the reference file nano_bc_ref.csv
+  if [[  -n "${TO_RUN[Fastq]}" ]]; then
+   
     
     BARCODE_SEQ=$(awk -F ',' -v nom="$NANOBC" '$1 == nom {print $3}' "$NANOBC_REF")
+    echo ${BARCODE_SEQ}
     
     echo -e "Demultiplexing the FASTQ files by nanoBC... \n"
     demultiplex_nanobc_func ${ODIR} ${INDEX} ${FORWARD} ${REVERSE} ${PREFIX} ${BARCODE_SEQ} ${LOGDIR}
@@ -298,15 +301,18 @@ echo "Running pipeline for sample $NAME"
     remove_nanobc_read1N_func ${ODIR} ${INDEX} ${PREFIX} ${LOGDIR}
     
     INDEX=${output_dir}/fastqs/${name}.R2.fastq.temp.gz
+    echo ${INDEX}
     
     ## 0- Create FASTQ files from BCL
-    if [[  -n "${TO_RUN[Fastq]}" ]]; then
+  
 
         echo -e "Reversing the index fastq... \n"
         reverse_fastq_func ${ODIR} ${INDEX} ${PREFIX} ${LOGDIR}
        fi  
    
     INDEX=${ODIR}/fastqs/${PREFIX}.R2.fastq.gz
+    
+     echo ${INDEX}
 
     ## 1- Align R2 reads on barcode indexes
     if [[  -n "${TO_RUN[Barcoding]}" ]]; then 
