@@ -158,9 +158,9 @@ demultiplex_nanobc_func()
   echo >> ${log}
   
   
-  $SCRIPTS_PATH/select_lines.sh ${output_dir}/fastqs/${name}.lines_to_keep.txt ${index} 1> ${output_dir}/fastqs/${name}.R2.fastq 2> ${log}
-  $SCRIPTS_PATH/select_lines.sh ${output_dir}/fastqs/${name}.lines_to_keep.txt ${forward} 1> ${output_dir}/fastqs/${name}.R1.fastq 2> ${log}
-  $SCRIPTS_PATH/select_lines.sh ${output_dir}/fastqs/${name}.lines_to_keep.txt ${reverse} 1> ${output_dir}/fastqs/${name}.R3.fastq 2> ${log}
+  .$SCRIPTS_PATH/select_lines.sh ${output_dir}/fastqs/${name}.lines_to_keep.txt ${index} 1> ${output_dir}/fastqs/${name}.R2.fastq 2> ${log}
+  .$SCRIPTS_PATH/select_lines.sh ${output_dir}/fastqs/${name}.lines_to_keep.txt ${forward} 1> ${output_dir}/fastqs/${name}.R1.fastq 2> ${log}
+  .$SCRIPTS_PATH/select_lines.sh ${output_dir}/fastqs/${name}.lines_to_keep.txt ${reverse} 1> ${output_dir}/fastqs/${name}.R3.fastq 2> ${log}
 
   rm ${output_dir}/fastqs/${name}.lines_to_keep.txt
   gzip ${output_dir}/fastqs/*
