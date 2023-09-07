@@ -13,24 +13,24 @@ fi
 
 if [ $file_size_kb -le 1000000 ]
 then
-mem=34
+mem=10
 elif [ $file_size_kb -le 5000000 ]
 then
-mem=40
+mem=15
 elif [  $file_size_kb -le 10000000 ]
 then
-mem=60
+mem=20
 elif [ $file_size_kb -le 15000000 ]
 then
-mem=80
+mem=25
 elif [  $file_size_kb -le 20000000 ]
 then
-mem=100
+mem=30
 elif [ $file_size_kb -le 25000000 ]
 then
-mem=120
+mem=30
 else 
-mem=120
+mem=30
 fi
 echo "$mem"
 
@@ -80,6 +80,7 @@ do
   
 mem_to_use=$(get_mem $READ_1)
 ppn_to_use=$((mem_to_use / 6))
+ppn_to_use=5
 echo $ppn_to_use 
 
 echo "cd /data/users/gjouault/GitLab/scNanoCutTag_InDrop; ./schip_processing.sh All --forward ${READ_1} --reverse ${READ_3} --index ${READ_2} --conf ${OUTPUT_CONFIG} --output ${OUTPUT_DIR} --name ${FINAL_NAME} --nanobc ${NANOBC} " | qsub -l nodes=1:ppn=${ppn_to_use},mem=${mem_to_use}gb,walltime=164:00:00 -N job_${FINAL_NAME}
