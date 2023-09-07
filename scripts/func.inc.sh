@@ -169,6 +169,7 @@ demultiplex_nanobc_func()
   echo "Finished demultiplexing fastqs !"
 }
 
+
 remove_nanobc_read1N_func()
 {
   output_dir=$1

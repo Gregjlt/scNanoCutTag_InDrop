@@ -309,9 +309,8 @@ echo "Running pipeline for sample $NAME"
     
     ## 0- Create FASTQ files from BCL
   
-
         echo -e "Reversing the index fastq... \n"
-        echo -e "je ne comprends rien à ce qu'il se passe"
+  
         reverse_fastq_func ${ODIR} ${INDEX} ${PREFIX} ${LOGDIR}
        fi  
    
